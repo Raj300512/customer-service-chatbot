@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Service Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .chat-box {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        .user {
+            background-color: #dcf8c6;
+            margin-left: auto;
+            text-align: right;
+        }
+        .bot {
+            background-color: #e6e6e6;
+            margin-right: auto;
+        }
+        input {
+            width: 75%;
+            padding: 8px;
+        }
+        button {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-box">
+    <h3>Customer Support Chatbot</h3>
+
+    {% for sender, text in chat_history %}
+        <div class="message {{ sender }}">
+            {{ text }}
+        </div>
+    {% endfor %}
+
+    <form method="post" style="display:flex; gap:5px;">
+    <input type="text" name="message" placeholder="Type a message..." required>
+    <button type="submit">Send</button>
+</form>
+
+<form method="post" action="/reset" style="margin-top:10px;">
+    <button type="submit" style="background:#ff4d4d;color:white;border:none;padding:8px;width:100%;">
+        Reset Chat
+    </button>
+</form>
+
